@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Order</title>
+</head>
+<body onload="readDataOrder()">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-success">
+            <a class="text-white navbar-brand" href="#">
+              <i class="logo1 fas fa-tshirt"></i> BSCPE STORE
+            </a>
+            <button class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" type="button">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav  mr-auto menu">
+                <li class="nav-item active">
+                  <a class="nav-link" href="admin.html">Orders</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="order.html">Edit Orders</a>
+                </li>
+              </ul>
+              <!--OTHER SIDE OF NAVIGATION BAR-->
+              <form class="form-inline mt-2 mt-md-0" action="">
+                <a class="text-white nav-link" href="../admin/admin.html">
+                  <i class="fas fa-sign-out-alt"></i>
+                </a>
+              </form>
+              <!--OTHER SIDE OF NAVIGATION BAR-->
+            </div>
+        </nav>
+    </header>
+    <div class="container mt-4">
+        <div class="row">
+            <div id="firstSection" class="col-md-6">
+                <form action="" class="border p-4 mb-4 align-items-center" id="form">
+                    <div class="form-group">
+                        <label for="">First Name</label>
+                        <input type="text" name="" id="firstname" class="form-control" placeholder="first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Last Name</label>
+                        <input type="text" name="" id="lastname" class="form-control" placeholder="last name">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Number</label>
+                        <input type="text" name="" id="number" class="form-control" placeholder="number">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Order</label>
+                        <input type="text" name="" id="order" class="form-control" placeholder="order">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Location</label>
+                        <input type="text" name="" id="location" class="form-control" placeholder="location">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Total Payment</label>
+                        <input type="text" name="" id="total" class="form-control" placeholder="total">
+                    </div>
+                    <button type="submit" id="buttonSubmit" class="btn btn-primary">
+                        <i class="fas fa-plus"> Add Order</i>
+                    </button>
+                    <button style="display:none" id="button2" class="btn btn-success"></button>
+                    <button style="display:none" id="button3" class="btn btn-danger"></button>
+                </form>
+            </div>
+            <div class="col-md-6" id="cardSection">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.8.0/dist/sweetalert2.all.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-storage.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCZU81BmzKaUNqTU7t_Vd7XoxF-7gHluh0",
+        authDomain: "bscpe-store.firebaseapp.com",
+        databaseURL: "https://bscpe-store.firebaseio.com",
+        projectId: "bscpe-store",
+        storageBucket: "bscpe-store.appspot.com",
+        messagingSenderId: "551619193334"
+      };
+      firebase.initializeApp(config);
+      console.log(firebase);
+
+      // make auth and firestore references 
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      const functions = firebase.functions();
+      const storage = firebase.storage();
+      const dbstore = firebase.database();
+
+      //update firestore settings
+      //db.settings({ timestampsInSnapshots: true});
+    </script>
+    <script src="../js/order.js"></script>
+</body>
+</html>
