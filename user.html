@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 shrink-to-fit=no"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"/>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css"
+      integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv"
+      crossorigin="anonymous"/>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400|Open+Sans|Raleway:500"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/font-awesome.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/carousel.css" />
+    <title>BSCPE SHOP</title>
+  </head>
+  <body onload="render()">
+    <header>
+      <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top">
+          <a class="text-white navbar-brand logo1" href="#">
+            <i class="fas fa-tshirt"></i> BSCPE STORE
+          </a>
+          <button
+            class="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            type="button"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse left" id="navbarCollapse">
+            <ul class="navbar-nav  mr-auto menu">
+              <li class="nav-item">
+                <a class="nav-item nav-link active"  href="index.html">Home</a>
+              </li>
+            </ul>
+            <!--OTHER SIDE OF NAVIGATION BAR-->
+            <form class="form-inline mt-2 mt-md-0" action="">
+                <li class="logged-in" style="display: none; ">
+                  <div class="username text-white" style="text-transform: capitalize; font-size: 1.0rem;"></div>
+                </li>
+              <li class="logged-in" style="display: none; font-size: 0.8rem;">
+                  <a
+                  class="text-white nav-link"
+                  href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <i style="color:yellow;" id="cart_n"></i>
+                  </a>
+              </li>
+              <li class="logged-in" style="display: none; font-size: 0.8rem;">
+                  <a
+                  data-toggle="modal"
+                  data-target="#modal-account"
+                  class="nav-link text-white modal-trigger"
+                  href="#">
+                    <i class="far fa-user "></i>
+                  </a>
+              </li>
+              <li class="logged-in" style="display: none; font-size: 0.8rem;">
+                <a href="#" class="nav-link text-white" id="logout">
+                    <i class="fas fa-power-off"></i>
+                </a>
+              </li>
+              <li class="logged-out" style="display: none; font-size: 0.8rem;">
+                  <a
+                  class="text-white nav-link"
+                  href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <i style="color:yellow;" id="cart_n2"></i>
+                  </a>
+              </li>
+              <li class="logged-out" style="display: none; font-size: 0.8rem;">
+                  <a
+                  href="#"
+                  class="nav-link text-white modal-trigger"
+                  data-toggle="modal"
+                  data-target="#ModalCenter">Login</a>
+              </li>
+              <!-- <a
+                data-toggle="modal"
+                data-target="#ModalCenter"
+                class="nav-link text-white"
+                href="#">
+                <i class="fas fa-cog fa-spin"></i>
+              </a> -->
+            </form>
+            <!--OTHER SIDE OF NAVIGATION BAR-->
+          </div>
+        </nav>
+      </div>
+    </header>
+
+
+      <!--ACCOUNT MODAL-->
+      <div
+      class="modal fade"
+      id="modal-account"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="ModalCenterTitle"
+      aria-hidden="true"
+      >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="ModalLongTitle" class="modal-title">
+              ACCOUNT DETAILS
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="account-details"></div>
+        </div>
+      </div>
+      </div>
+      <!-- <div id="modal-account" class="modal fade"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="ModalCenterTitle"
+      aria-hidden="true">
+        <div class="modal-content center-align modal-dialog-scrollable">
+          <h4>Account details</h4>
+          <br />
+          <div class="account-details"></div>
+        </div>
+      </div> -->
+      <!--ACCOUNT MODAL-->
+
+
+
+      <!--MODAL POPUP FOR ADMINISTRATOR-->
+      <div
+        class="modal fade"
+        id="ModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="ModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <!-- <div class="modal-header">
+              <h5 id="ModalLongTitle" class="modal-title">
+                
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div> -->
+            <div style="margin: 10px;">
+                <nav >
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Login</a>
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Signup</a>
+                   </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <form name="loginform"
+                        autocomplete="off"
+                        id="login-form"
+                        class="text-center border border-light p-5"
+                      >
+                        <p class="h5 mb-4">
+                          LOGIN
+                        </p>
+                        <input
+                          type="email"
+                          required
+                          id="login-email"
+                          class="form-control mb-4"
+                          placeholder="Email"
+                        />
+                        <input
+                          type="password"
+                          required
+                          id="login-password"
+                          class="form-control mb-4"
+                          placeholder="Password"
+                        />
+                        <button
+                          style="color:white"
+                          type="submit"
+                          class="btn btn-success btn-block"
+                        >
+                          SUBMIT
+                        </button>
+                        <br>
+                        <p class="error pink-text center-align"></p>
+                      </form>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <form name="sign-up-form"
+                        autocomplete="off"
+                        id="signup-form"
+                        class="text-center border border-light p-5"
+                      >
+                        <p class="h5 mb-4">
+                          Create your account
+                        </p>
+                        <div class="input-field">
+                          <input
+                          type="email"
+                          required
+                          id="signup-email"
+                          class="form-control mb-4"
+                          placeholder="Email"
+                        />
+                        </div>
+                  
+                        <input
+                          type="password"
+                          required
+                          id="signup-password"
+                          class="form-control mb-4"
+                          placeholder="Password"
+                        />
+                        <input
+                        type="text"
+                        required
+                        id="signup-firstname"
+                        class="form-control mb-4"
+                        placeholder="First Name"
+                        />
+                        <input
+                        type="text"
+                        required
+                        id="signup-lastname"
+                        class="form-control mb-4"
+                        placeholder="Last Name"
+                        />  
+                        <input
+                        type="number"
+                        required
+                        id="signup-number"
+                        class="form-control mb-4"
+                        placeholder="Contact Number"
+                        />  
+                        <button
+                          style="color:white"
+                          type="submit"
+                          class="btn btn-success btn-block"
+                        >
+                          Register
+                        </button>
+                        <p class="error center-align" style="color: #922145; margin-top: 20px;"></p>
+                      </form>
+                    </div>
+                  </div>
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+      <!--END OF MODAL FOR ADMINISTRATOR-->
+
+<!-- MODAL POPUP FOR SIGNUP-->
+<!-- <div
+class="modal fade"
+id="ModalSignUp"
+tabindex="-1"
+role="dialog"
+aria-labelledby="ModalCenterTitle"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 id="ModalLongTitle" class="modal-title">
+        SIGNUP
+      </h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form
+      autocomplete="off"
+      id="signup-form"
+      class="text-center border border-light p-5"
+    >
+      <p class="h5 mb-4">
+        Create Account
+      </p>
+      <div class="input-field">
+        <input
+        type="email"
+        required
+        id="signup-email"
+        class="form-control mb-4"
+        placeholder="Email"
+      />
+      </div>
+
+      <input
+        type="password"
+        required
+        id="signup-password"
+        class="form-control mb-4"
+        placeholder="Password"
+      />
+      <input
+      type="text"
+      required
+      id="signup-firstname"
+      class="form-control mb-4"
+      placeholder="First Name"
+      />
+      <input
+      type="text"
+      required
+      id="signup-lastname"
+      class="form-control mb-4"
+      placeholder="Last Name"
+      />  
+      <input
+      type="number"
+      required
+      id="signup-number"
+      class="form-control mb-4"
+      placeholder="Contact Number"
+      />  
+      <button
+        style="color:white"
+        type="submit"
+        class="btn btn-warning btn-block"
+      >
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+</div> -->
+<!--END OF MODAL FOR SIGNUP -->
+
+
+      <!--MODAL POPUP FOR CART-->
+      <div
+        class="modal fade"
+        id="ModalCart"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="ModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 id="ModalLongTitle" class="modal-title">
+                CART
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="container mt-3">
+              <main role="main">
+                <div class="row">
+                  <div class="col">
+                    <div class="table-reponsive-sm">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tableCart"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </main>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--END OF MODAL FOR CART-->
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.8.0/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-storage.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCZU81BmzKaUNqTU7t_Vd7XoxF-7gHluh0",
+        authDomain: "bscpe-store.firebaseapp.com",
+        databaseURL: "https://bscpe-store.firebaseio.com",
+        projectId: "bscpe-store",
+        storageBucket: "bscpe-store.appspot.com",
+        messagingSenderId: "551619193334"
+      };
+      firebase.initializeApp(config);
+      console.log(firebase);
+
+      // make auth and firestore references 
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      const functions = firebase.functions();
+      const storage = firebase.storage();
+
+      //update firestore settings
+      //db.settings({ timestampsInSnapshots: true});
+    </script>
+
+    <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
+    <script src=""></script>
+  </body>
+</html>

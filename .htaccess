@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} /admin/admin.html$
+RewriteRule .* gjkiutrtfnjr4324$5gj=admin? [L]

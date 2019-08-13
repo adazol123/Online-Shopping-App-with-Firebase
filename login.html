@@ -1,0 +1,290 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <style media="screen">
+      .fileLoader {
+        display: flex;
+        min-height: 100vh;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      #uploader {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 50%;
+        margin-bottom: 10px;
+      }
+    </style>
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+      />
+      <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400|Open+Sans|Raleway:500"
+      rel="stylesheet"
+    />
+          <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+  </head>
+  <body class="grey lighten-3">
+  <div class="navbar-fixed">
+  <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Logo</a>
+      <button
+            class="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            type="button"
+          >
+            <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="right hide-on-med-and-down">
+        <li class="logged-in" style="display: none;">
+          <a
+            href="#"
+            class=" modal-trigger"
+            data-target="modal-account"
+            >Account</a>
+        </li>
+
+        <li class="logged-in" style="display: none;">
+          <a
+            href="#"
+            class=" modal-trigger"
+            data-target="modal-create"
+            >Create Guide</a
+          >
+        </li>
+        <li class="logged-in" style="display: none;">
+          <a href="#" class="grey-text" id="logout">Logout</a>
+        </li>
+        <li class="logged-out" style="display: none;">
+          <a
+            href="#"
+            class=" modal-trigger"
+            data-target="modal-login"
+            >Login</a
+          >
+        </li>
+        <li class="logged-out" style="display: none;">
+          <a
+            href="#"
+            class=" modal-trigger"
+            data-target="modal-signup"
+            >Sign</a
+          >
+        </li>
+      </ul>
+
+    </div>
+    <!-- <div class="nav-content">
+      <a class="btn-floating btn-large halfway-fab waves-effect waves-light grey">
+        <i class="material-icons">menu</i>
+      </a>
+    </div> -->
+  </nav>
+  </div>
+    <!-- <nav class="z-depth-0 grey lighten-4">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">HELLO</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="logged-in" style="display: none;">
+            <a
+              href="#"
+              class="grey-text modal-trigger"
+              data-target="modal-account"
+              >Account</a
+            >
+          </li>
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="grey-text" id="logout">Logout</a>
+          </li>
+          <li class="logged-in" style="display: none;">
+            <a
+              href="#"
+              class="grey-text modal-trigger"
+              data-target="modal-create"
+              >Create Guide</a
+            >
+          </li>
+          <li class="logged-out" style="display: none;">
+            <a
+              href="#"
+              class="grey-text modal-trigger"
+              data-target="modal-login"
+              >Login</a
+            >
+          </li>
+          <li class="logged-out" style="display: none;">
+            <a
+              href="#"
+              class="grey-text modal-trigger"
+              data-target="modal-signup"
+              >Sign</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav> -->
+
+    <!-- ADMIN ACTIONS -->
+    <form
+      class="center-align admin-actions admin"
+      style="margin: 40px auto; max-width: 300px; display: none;"
+    >
+      <input type="email" placeholder="User email" id="admin-email" required />
+      <button class="btn-small red darken-2 z-depth-0">Make Admin</button>
+    </form>
+
+    <!--SIGNUP MODAL-->
+    <div id="modal-signup" class="modal">
+      <div class="modal-content">
+        <form action="" id="signup-form">
+          <div class="input-field">
+            <input type="email" id="signup-email" required />
+            <label for="signup-email">Email Address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="signup-password" required />
+            <label for="signup-password">Choose Password</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="signup-bio" required />
+            <label for="signup-bio">One Line Bio</label>
+          </div>
+          <button class="btn yellow darken-2 z-depth-0">Sign Up</button>
+          <p class="error pink-text center-align"></p>
+        </form>
+      </div>
+    </div>
+
+    <!--LOGIN MODAL-->
+    <div id="modal-login" class="modal">
+      <div class="modal-content">
+        <form action="" id="login-form">
+          <div class="input-field">
+            <input type="email" id="login-email" required />
+            <label for="login-email">Email Address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="login-password" required />
+            <label for="login-password">Choose Password</label>
+          </div>
+          <button class="btn yellow darken-2 z-depth-0">Sign Up</button>
+          <p class="error pink-text center-align"></p>
+        </form>
+      </div>
+    </div>
+
+    <!--ACCOUNT MODAL-->
+    <div id="modal-account" class="modal">
+      <div class="modal-content center-align">
+        <h4>Account details</h4>
+        <br />
+        <div class="account-details"></div>
+      </div>
+    </div>
+
+    <!--CREATE MODAL-->
+    <div id="modal-create" class="modal">
+      <div class="modal-content">
+        <form action="" id="create-form">
+          <div class="input-field">
+            <input type="text" id="title" required />
+            <label for="title">Guide Title</label>
+          </div>
+          <div class="input-field">
+            <textarea
+              id="content"
+              class="materialize-textarea"
+              required
+            ></textarea>
+            <label for="content">Guide Content</label>
+          </div>
+          <button class="btn yellow darken-2 z-depth-0">Create</button>
+        </form>
+      </div>
+    </div>
+
+    <!--GUIDE LIST-->
+    <div class="container" style="margin-top: 40px;">
+      <ul class="collapsible z-depth-0 guides" style="border: none;"></ul>
+    </div>
+
+    <!-- FIREBASE STORAGE -->
+    <div class="fileLoader">
+      <progress value="0" max="100" id="uploader">0%</progress>
+      <input type="file" value="upload" id="fileButton" />
+    </div>
+
+
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.8.0/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-storage.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCZU81BmzKaUNqTU7t_Vd7XoxF-7gHluh0",
+        authDomain: "bscpe-store.firebaseapp.com",
+        databaseURL: "https://bscpe-store.firebaseio.com",
+        projectId: "bscpe-store",
+        storageBucket: "bscpe-store.appspot.com",
+        messagingSenderId: "551619193334"
+      };
+      firebase.initializeApp(config);
+      console.log(firebase);
+
+      // make auth and firestore references
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      const functions = firebase.functions();
+      const storage = firebase.storage();
+
+      //update firestore settings
+      //      db.settings({ timestampsInSnapshots: true});
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>
